@@ -1,14 +1,14 @@
 import React from "react";
-import SearchComponent from "./searchComponent";
+import DetailsComponent from "./detailsComponent";
 
-function SearchPage() {
+function DetailsPage() {
     return(
         <div className="row mt-2">
             <div className="col-2 bg-success text-white">
                 Wigma
             </div>
             <div className="col-8">
-                <SearchComponent/>
+                <DetailsComponent/>
             </div>
             <div className="col-2 bg-success text-white">
                 Ligma
@@ -18,4 +18,4 @@ function SearchPage() {
     );
 }
 
-export default SearchPage;
+export default DetailsPage;
