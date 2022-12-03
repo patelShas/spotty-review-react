@@ -4,6 +4,7 @@ import HomePage from "./home/index.js";
 import SearchPage from "./search/index.js";
 import ProfilePage from "./profile/index.js";
 import LoginPage from "./login/index.js";
+import Dashboard from "./components/Dashboard"
 
 
 
@@ -13,8 +14,8 @@ function App() {
           <Routes>
               <Route path="/"
                      element={<HomePage/>}/>
-              <Route path="/search"
-                     element={<SearchPage/>}/>
+              <Route path="/dashboard"
+                     element={<Dashboard/>}/>
               <Route path={"/profile"}
                      element={<ProfilePage/>}/>
               <Route path={"/login"}

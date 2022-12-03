@@ -4,7 +4,7 @@ function HomePage() {
     return(
         <div>
             <h1>Hello World!</h1>
-            <Link to="/search">Search Page</Link> |
+            <Link to="../components/Dashboard">Search Page</Link> |
             <Link to="/profile">Profile Page</Link>
             <div>
                 <p>
