@@ -7,8 +7,9 @@ import {Provider} from "react-redux";
 import albumReducer from "./reducers/album-reducer";
 import reviewsReducer from "./reducers/reviews-reducer";
 import { configureStore } from '@reduxjs/toolkit';
+import whoReducer from "./reducers/who-reducer";
 const store = configureStore({
-    reducer: {albums : albumReducer, reviews: reviewsReducer}
+    reducer: {who : whoReducer, albums : albumReducer, reviews: reviewsReducer}
 });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
