@@ -5,10 +5,10 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {Provider} from "react-redux";
 import albumReducer from "./reducers/album-reducer";
-import reviewsReducer from "./reducers/reviews-reducer";
+import reviewsReducer from "./reviews/processing/reviews-reducer";
 import { configureStore } from '@reduxjs/toolkit';
 const store = configureStore({
-    reducer: {albums : albumReducer, reviews: reviewsReducer}
+    reducer: {albums : albumReducer, reviewData: reviewsReducer}
 });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

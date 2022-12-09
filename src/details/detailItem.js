@@ -12,9 +12,13 @@ const DetailItem = (
 ) => {
     return (
         <div className={"p-3 list-group-item"}>
-            <div className={"d-flex flex-row justify-content-between"}>
+            <div className={"d-sm-none d-flex-columns justify-content-center"}>
+                <img src={album.img} alt={`${album.name} cover`}  className={"rounded"} width={"200"} height={"200"}></img>
                 <h1>{album.name}</h1>
-                <img src={album.img} alt={`${album.name} cover`} className={""} width={"120"} height={"120"}></img>
+            </div>
+            <div className={"d-none d-sm-flex flex-row justify-content-between"}>
+                <h1>{album.name}</h1>
+                <img src={album.img} alt={`${album.name} cover`} className={"rounded"} width={"200"} height={"200"}></img>
             </div>
             <ul>
                 <li>Released on {album.release_date}</li>

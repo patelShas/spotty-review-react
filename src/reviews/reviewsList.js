@@ -1,5 +1,7 @@
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import ReviewItem from "./reviewItem";
+import {useEffect} from "react";
+import {findReviewThunk} from "./processing/review-thunks";
 
 const ReviewsList = (
     {
@@ -8,10 +10,20 @@ const ReviewsList = (
         }
     }
 ) => {
-    const reviewsArray = useSelector(state => state.reviews).filter(review => review.album_id === album._id)
+    const {reviews, loading} = useSelector(state => state.reviewData)
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(findReviewThunk(album._id))
+    }, [album._id, dispatch])
     return (
         <>
-            {reviewsArray.map(review => (
+            {
+                loading &&
+                <li className="list-group-item">
+                    Loading...
+                </li>
+            }
+            {reviews.map(review => (
                 <div className={"list-group-item"} key={review._id}>
                     <ReviewItem review={review}/>
                 </div>

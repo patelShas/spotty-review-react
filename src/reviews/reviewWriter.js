@@ -1,6 +1,6 @@
 import {useState} from "react";
-import {addReview} from "../reducers/reviews-reducer";
 import {useDispatch} from "react-redux";
+import {createReviewThunk} from "./processing/review-thunks";
 
 const ReviewWriter = (
     {
@@ -30,7 +30,7 @@ const ReviewWriter = (
             reviewer: "Bob",
             likes: 0
         };
-        dispatch(addReview(newReview))
+        dispatch(createReviewThunk(newReview))
     }
     return (
         <div className={"list-group-item d-flex flex-row justify-content-between"}>
