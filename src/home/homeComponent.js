@@ -1,20 +1,35 @@
 import {Link} from "react-router-dom";
+// import 'bootstrap/dist/superhero/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.css'
+// import 'bootstrap'
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 function HomeComponent() {
     return(
-        <div>
-            <h1>Hello World!</h1>
-            <Link to="/search">Search Page</Link> |
-            <Link to="/profile">Profile Page</Link>
+
+        <div >
+
+            <h1 class={"display-1"}>The Spotify Music Reviewer</h1>
             <div>
-                <p>
-                    Here we would place "Anonymous content"
-                </p>
+
+                <img class="rounded img-fluid"
+                     src="https://cdn.vox-cdn.com/thumbor/yP8ceUvjxtHBV7KfFA6E5VcdNCM=/0x0:5000x3070/3570x2008/filters:focal(2100x1135:2900x1935):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/70221368/GettyImages_1140668438_green.0.jpg" alt="title img" height="500px"/>
             </div>
-            <div>
-                <p>
-                    And some "logged in content"
-                </p>
+            <div class="row">
+                <div class="col-9">
+                    <h2 class={"display-5"}>Current Hits</h2>
+                    <img class="rounded img-thumbnail"
+                         src={"https://charts-images.scdn.co/csc_assets/socials_posts/top_albums_global.jpg"} alt={"current hits"}></img>
+                </div>
+                <div className="col-3">
+                    <h2 class="display-5">Suggestions</h2>
+                    <img class="rounded img-fluid mt-lg-4 mb-lg-4"
+                         src={"https://www.musicinminnesota.com/wp-content/uploads/2022/01/Photo-by-xaviershanley-from-Pexels.jpg"} alt={"suggestion 1"}></img>
+                    <img class="rounded img-fluid mt-lg-4 mb-lg-4"
+                         src={"https://i.pinimg.com/originals/9a/b9/f9/9ab9f9a5a1001e820af128b5c20f1b55.jpg"} alt={"suggestion 2"}></img>
+                    <img class={"rounded img-fluid mt-lg-4 mb-lg-4"}
+                         src={"https://www.musicinminnesota.com/wp-content/uploads/2022/01/Photo-by-davisuko-on-Unsplash-.jpg"} alt={"suggestion 3"}></img>
+                </div>
             </div>
             <div>
                 Exact requirements are:

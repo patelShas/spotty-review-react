@@ -13,6 +13,7 @@ function App() {
     console.log(window.location.href.split('/')[3])
     return (<div className="container">
         <BrowserRouter>
+
             <div className="row mt-2">
                 <div className="col-auto col-lg-2">
                     <NavigationSidebar active={window.location.href.split('/')[3]}/>
