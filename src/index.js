@@ -3,11 +3,21 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {Provider} from "react-redux";
+import albumReducer from "./reducers/album-reducer";
+import reviewsReducer from "./reducers/reviews-reducer";
+import { configureStore } from '@reduxjs/toolkit';
+import whoReducer from "./reducers/who-reducer";
+const store = configureStore({
+    reducer: {who : whoReducer, albums : albumReducer, reviews: reviewsReducer}
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+      <Provider store={store}>
+          <App/>
+      </Provider>
   </React.StrictMode>
 );
 
