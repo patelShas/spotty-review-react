@@ -1,8 +1,9 @@
 import React from "react";
+import {useLocation} from "react-router";
 
-const NavigationSidebar = ({
-                               active = 'home'
-                           }) => {
+const NavigationSidebar = () => {
+    const {parts} = useLocation();
+    const active = parts.split('/')[1];
     return (<div className="list-group">
         <a className={`list-group-item
                     ${active === 'home' ? 'active' : ''}`}

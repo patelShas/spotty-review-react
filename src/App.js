@@ -1,27 +1,37 @@
 import 'bootswatch/dist/superhero/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import {BrowserRouter, Routes, Route} from "react-router-dom";
-import HomePage from "./home/index.js";
-import SearchPage from "./search/index.js";
-import DetailsPage from "./details/index.js";
-import ProfilePage from "./profile/index.js";
-import LoginPage from "./login/index.js";
+import {BrowserRouter, Routes, Route, useParams} from "react-router-dom";
+import ProfileComponent from "./profile/profileComponent";
+import NavigationSidebar from "./navigation-sidebar";
+import HomeComponent from "./home/homeComponent";
+import SearchComponent from "./search/searchComponent";
+import DetailsComponent from "./details/detailsComponent";
+import LoginComponent from "./login/loginComponent";
 
 function App() {
-    return (<BrowserRouter>
-            <Routes>
-                <Route path="/"
-                       element={<HomePage/>}/>
-                <Route path="/search/*"
-                       element={<SearchPage/>}/>
-                <Route path="/details/*"
-                       element={<DetailsPage/>}/>
-                <Route path={"/profile"}
-                       element={<ProfilePage/>}/>
-                <Route path={"/login"}
-                       element={<LoginPage/>}/>
-            </Routes>
-        </BrowserRouter>);
+    return (<div className="container">
+            <div className="row mt-2">
+                <div className="col-auto col-lg-2">
+                    <NavigationSidebar/>
+                </div>
+                <div className="col-10">
+                    <BrowserRouter>
+                        <Routes>
+                            <Route path="/"
+                                   element={<HomeComponent/>}/>
+                            <Route path="/search/*"
+                                   element={<SearchComponent/>}/>
+                            <Route path="/details/*"
+                                   element={<DetailsComponent/>}/>
+                            <Route path={"/profile"}
+                                   element={<ProfileComponent/>}/>
+                            <Route path={"/login"}
+                                   element={<LoginComponent/>}/>
+                        </Routes>
+                    </BrowserRouter>
+                </div>
+            </div>
+        </div>);
 }
 
 export default App;

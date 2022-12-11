@@ -1,6 +1,5 @@
-
-function LoginPage() {
-    return(
+function LoginComponent() {
+    return (
         <div>
             <h1>Login</h1>
             <div>
@@ -30,4 +29,4 @@ function LoginPage() {
     );
 }
 
-export default LoginPage;
+export default LoginComponent;
