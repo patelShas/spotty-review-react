@@ -1,18 +1,15 @@
 import React from "react";
-import {useLocation} from "react-router";
 
-const NavigationSidebar = () => {
-    const {parts} = useLocation();
-    const active = parts.split('/')[1];
+const NavigationSidebar = ({active = 'home'}) => {
     return (<div className="list-group">
         <a className={`list-group-item
-                    ${active === 'home' ? 'active' : ''}`}
+                    ${active === 'home' || active === '' ? 'active' : ''}`}
            href="/">
             <i className="bi bi-house-door-fill"></i>
             <span className="d-none d-lg-inline"> Home</span>
         </a>
         <a className={`list-group-item
-                    ${active === 'explore' ? 'active' : ''}`}
+                    ${active === 'search' ? 'active' : ''}`}
            href="/search">
             <i className="bi bi-search"></i>
             <span className="d-none d-lg-inline"> Search</span>
