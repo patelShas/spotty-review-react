@@ -11,6 +11,7 @@ import LoginComponent from "./login/loginComponent";
 function App() {
     return (<div className="container">
         <BrowserRouter>
+
             <div className="row mt-2">
                 <div className="col-auto col-lg-2">
                     <Routes>
