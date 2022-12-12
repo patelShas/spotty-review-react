@@ -1,9 +1,11 @@
 import React from "react";
+import {useParams} from "react-router";
 
-const NavigationSidebar = ({active = 'home'}) => {
+const NavigationSidebar = () => {
+    let {active} = useParams();
     return (<div className="list-group">
         <a className={`list-group-item
-                    ${active === 'home' || active === '' ? 'active' : ''}`}
+                    ${!active || active === 'home' ? 'active' : ''}`}
            href="/">
             <i className="bi bi-house-door-fill"></i>
             <span className="d-none d-lg-inline"> Home</span>
