@@ -1,4 +1,4 @@
-import 'bootswatch/dist/superhero/bootstrap.min.css';
+import 'bootswatch/dist/darkly/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import ProfileComponent from "./profile/profileComponent";
@@ -11,7 +11,6 @@ import LoginComponent from "./login/loginComponent";
 function App() {
     return (<div className="container">
         <BrowserRouter>
-
             <div className="row mt-2">
                 <div className="col-auto col-lg-2">
                     <Routes>

@@ -1,5 +1,3 @@
-
-
 function HomeComponent() {
     return (<div>
         <h1 className={"display-1"}>The Spotify Music Reviewer</h1>
