@@ -30,7 +30,6 @@ export const getAuth = async () => {
             qs.stringify(data),
             headers
         );
-        console.log(response.data.access_token);
         return response.data.access_token;
     } catch (error) {
         console.log(error);
@@ -46,7 +45,6 @@ export const findDetails = async (album_id) => {
         }
     });
     const info = response.data;
-    console.log(info)
     const albumData = {
         "_id": info.uri.split(":")[2],
         "name": info.name,
@@ -56,6 +54,5 @@ export const findDetails = async (album_id) => {
         "artist": info.artists[0].name // We are making an assumption here that the album info will include artists,
                                         // which isnt guaranteed
     }
-    console.log(albumData)
     return albumData;
 }

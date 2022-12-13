@@ -10,30 +10,36 @@ import {findDetailsThunk} from "./processing/detail-thunks";
 function DetailsComponent() {
     const {pathname} = useLocation()
     const parts = pathname.split("/")
-    const albumsArray = useSelector(state => state.albums)
+    const album_id = parts[parts.length - 1]
+
+    const details = useSelector(state => state.details)
+    const fullfilled = details.fulfilled
+    const chosenAlbum = details.details
+
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(findDetailsThunk(album._id))
-    }, [album._id, dispatch])
-    let chosenAlbum
-    for (let i = 0; i < albumsArray.length; i++) {
-        if (albumsArray[i]._id === parts[parts.length - 1]) {
-            chosenAlbum = albumsArray[i]
-        }
-    }
+        dispatch(findDetailsThunk(album_id))
+    }, [album_id, dispatch])
+
     return (
         <div>
-            {chosenAlbum ? (
+            {fullfilled === 1 ? (
                     <div className={"list-group"}>
                         <DetailItem album={chosenAlbum}/>
                         <ReviewWriter album={chosenAlbum}/>
                         <ReviewsList album={chosenAlbum}/>
                     </div>
-                ) :
-                <div className={"p-3 bg-danger"}>
-                    <h2 className={"text-white"}>{"Sorry, but no matching album was found"}</h2>
-                </div>}
-
+                ) : (
+                fullfilled === -1 ? (
+                    <div className={"p-3 bg-danger"}>
+                        <h2 className={"text-white"}>{"Sorry, but no matching album was found"}</h2>
+                    </div>
+                ) : (
+                    <div className={"p-3 bg-secondary"}>
+                        <h2 className={"text-white"}>{"loading..."}</h2>
+                    </div>
+                )
+            )}
         </div>
     )
 }

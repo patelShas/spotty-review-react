@@ -1,6 +1,4 @@
-import {useDispatch} from "react-redux";
-import {useEffect} from "react";
-import {findDetailsThunk} from "./processing/detail-thunks";
+
 
 const DetailItem = (
     {
