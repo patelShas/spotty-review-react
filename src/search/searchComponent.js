@@ -1,3 +1,5 @@
+import SearchBar from "./searchBar";
+
 function SearchComponent() {
     return(
         <div>
@@ -7,6 +9,7 @@ function SearchComponent() {
                     We would have a list of posts, each linking to a dedicated details page.
                 </p>
             </div>
+            <SearchBar/>
             <div>
                 Exact requirements are:
                 <ul>
