@@ -10,10 +10,15 @@
     "axios": "^1.2.1",
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.2",
+<<<<<<< HEAD
     "cors": "^2.8.5",
+=======
+    "bootswatch": "^5.2.3",
+>>>>>>> ee0066d44d95eb3ff56e9ad5c55a7602e8e84537
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
+    "react-router": "^6.4.3",
     "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
     "redux": "^4.2.0",
