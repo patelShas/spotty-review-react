@@ -31,7 +31,9 @@ const ReviewItem = (
                     <a href={`/profile/${review.reviewer}`}>
                         <span className={"fw-bold"}>{review.reviewer}</span>
                     </a>
-                    <span className={"fw-bold"}> • {review.date}</span>
+                    <span className={"fw-bold"}> • {review.date} •</span>
+                    <span className={""}> Album ID: </span>
+                    <span className={"fw-bold"}>{review.album_id}</span>
                 </div>
                 <div className={"border-white"}>
                     <button type="button" className="btn btn-danger rounded-pill" onClick={() => {deleteReviewHandler(review._id)}}>Delete Review</button>
@@ -47,6 +49,10 @@ const ReviewItem = (
                 }}>
                     {review.likes}👍
                 </div>
+            </div>
+            <div className={""}>
+                <span>I rate this album: </span>
+                <span className={"fw-bold"}>{review.score} ⭐️</span>
             </div>
         </div>
     )
