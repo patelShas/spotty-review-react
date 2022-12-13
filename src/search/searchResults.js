@@ -25,11 +25,11 @@ const SearchResults = (
                 Loading...
             </div>}
             {status === 1 && albums.map(album => (
-                <div className={"list-group-item d-flex flex-row justify-content-between"}>
-                    <a href={`/details/${album.id}`}>{album.name}</a>
+                <a className={"list-group-item d-flex flex-row justify-content-between"} href={`/details/${album.id}`}>
+                    {album.name}
                     <img src={album.images[0].url} alt={`${album.name} cover`} className={"rounded"} width={"50"}
                          height={"50"}></img>
-                </div>
+                </a>
             ))}
             {((status === -1) || (status === 1 && albums.length === 0) )&& <div className={"list-group-item"}>
                 Sorry, No results found.

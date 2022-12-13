@@ -1,6 +1,3 @@
-import ReviewsList from "../reviews/reviewsList"
-import ReviewItem from "../reviews/reviewItem";
-
 function HomeComponent() {
     return (<div>
         <h1 className={"display-1"}>The Spotify Music Reviewer</h1>
@@ -30,13 +27,7 @@ function HomeComponent() {
                      alt={"suggestion 3"}></img>
             </div>
         </div>
-        <div>
-            <h2 className={"display-4"}>Recent Review</h2>
-            <div className={"mb-4 p-2 border border-5 border-start border-info rounded-4"}>
-                <ReviewItem/>
-            </div>
 
-        </div>
         <div>
             Exact requirements are:
             <ul>
