@@ -45,7 +45,17 @@ export const findDetails = async (album_id) => {
             'Authorization': `Bearer ${access_token}`
         }
     });
-    const reviews = response.data;
-    console.log(reviews)
-    return reviews;
+    const info = response.data;
+    console.log(info)
+    const albumData = {
+        "_id": info.uri.split(":")[2],
+        "name": info.name,
+        "img": info.images[0].url,
+        "total_tracks": info.total_tracks,
+        "release_date": info.release_date,
+        "artist": info.artists[0].name // We are making an assumption here that the album info will include artists,
+                                        // which isnt guaranteed
+    }
+    console.log(albumData)
+    return albumData;
 }

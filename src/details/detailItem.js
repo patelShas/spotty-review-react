@@ -14,10 +14,7 @@ const DetailItem = (
 
     },
 ) => {
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(findDetailsThunk(album._id))
-    }, [album._id, dispatch])
+
     return (
         <div className={"p-3 list-group-item"}>
             <div className={"d-sm-none d-flex-columns justify-content-center"}>
