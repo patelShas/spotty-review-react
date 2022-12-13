@@ -51,8 +51,9 @@ export const findDetails = async (album_id) => {
         "img": info.images[0].url,
         "total_tracks": info.total_tracks,
         "release_date": info.release_date,
-        "artist": info.artists[0].name // We are making an assumption here that the album info will include artists,
+        "artist": info.artists[0].name, // We are making an assumption here that the album info will include artists,
                                         // which isnt guaranteed
+        "link": info.external_urls.spotify
     }
     return albumData;
 }

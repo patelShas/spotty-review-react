@@ -2,7 +2,7 @@ import {createSlice} from "@reduxjs/toolkit";
 import {searchThunk} from "./search-thunk";
 
 const initialState = {
-    loading: false,
+    searchStatus: 0,
     results: []
 }
 
@@ -11,15 +11,15 @@ const albumSearchSlice = createSlice({
     initialState,
     extraReducers: {
         [searchThunk.pending]: (state) => {
-            state.loading = true
+            state.searchStatus = 0
             state.results = []}
         ,
         [searchThunk.rejected]: (state) => {
-            state.loading = false
+            state.searchStatus = -1
             state.results = []}
         ,
         [searchThunk.fulfilled]: (state, {payload}) => {
-            state.loading = false
+            state.searchStatus = 1
             state.results = payload
         },
     }
