@@ -7,6 +7,7 @@ import HomeComponent from "./home/homeComponent";
 import SearchComponent from "./search/searchComponent";
 import DetailsComponent from "./details/detailsComponent";
 import LoginComponent from "./login/loginComponent";
+import RegisterComponent from "./register/registerComponent";
 
 function App() {
     return (<div className="container">
@@ -33,6 +34,8 @@ function App() {
                                element={<ProfileComponent/>}/>
                         <Route path={"/login"}
                                element={<LoginComponent/>}/>
+                        <Route path={"/register"}
+                               element={<RegisterComponent/>}/>
                     </Routes>
                 </div>
             </div>
