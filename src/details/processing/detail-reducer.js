@@ -21,7 +21,6 @@ const detailsSlice = createSlice({
         [findDetailsThunk.fulfilled]: (state, {payload}) => {
             state.fulfilled = 1
             state.details = payload
-            console.log(payload)
         },
     }
 });

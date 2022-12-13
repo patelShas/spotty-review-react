@@ -11,7 +11,6 @@ const SearchResults = (
     const searchData = useSelector(state => state.searchResults)
     const status = searchData.searchStatus
     const albums = searchData.results
-    console.log(albums)
 
     const dispatch = useDispatch();
     useEffect(() => {
