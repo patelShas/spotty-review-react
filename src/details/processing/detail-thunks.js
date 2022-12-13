@@ -6,7 +6,6 @@ import * as service
 export const findDetailsThunk = createAsyncThunk(
     'details/findDetails', async (album_id) => {
         const resp = await service.findDetails(album_id)
-        console.log(resp)
         return resp
     }
 

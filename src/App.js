@@ -17,6 +17,7 @@ function App() {
                     <Routes>
                         <Route path="/" element={<NavigationSidebar/>}/>
                         <Route path="/:active" element={<NavigationSidebar/>}/>
+                        <Route path="/:active/*" element={<NavigationSidebar/>}/>
                     </Routes>
                 </div>
                 <div className="col-10">
