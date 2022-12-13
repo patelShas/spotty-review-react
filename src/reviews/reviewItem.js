@@ -33,8 +33,6 @@ const ReviewItem = (
                     <span className={"fw-bold"}> • {review.date} •</span>
                     <span className={""}> Album ID: </span>
                     <span className={"fw-bold"}>{review.album_id}</span>
-                    <span className={""}> Review ID: </span>
-                    <span className={"fw-bold"}>{review._id}</span>
                 </div>
                 <div className={"border-white"}>
                     <button type="button" className="btn btn-danger rounded-pill" onClick={() => {deleteReviewHandler(review._id)}}>Delete Review</button>
