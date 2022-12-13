@@ -33,6 +33,8 @@ function App() {
                                element={<ProfileComponent/>}/>
                         <Route path={"/login"}
                                element={<LoginComponent/>}/>
+                        <Route path={"/register"}
+                               element={<RegisterComponent/>}/>
                     </Routes>
                 </div>
             </div>
