@@ -6,7 +6,6 @@ const ReviewItem = (
         review = {
             "album_id": "123",
             "text": "I found this by scrolling through their discography",
-            "score": "3",
             "date": "2022-12",
             "reviewer": "Alice",
             "likes": 12
@@ -34,7 +33,7 @@ const ReviewItem = (
                     <span className={"fw-bold"}> • {review.date}</span>
                 </div>
                 <div>
-                    <button type="button" className="btn btn-danger" onClick={() => {deleteReviewHandler(review._id)}}>Farm upstate</button>
+                    <button type="button" className="btn btn-danger" onClick={() => {deleteReviewHandler(review._id)}}>Your opinion sucks!</button>
                 </div>
             </div>
             <br/>

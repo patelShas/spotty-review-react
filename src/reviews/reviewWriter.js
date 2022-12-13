@@ -25,7 +25,6 @@ const ReviewWriter = (
         const newReview = {
             album_id: album._id,
             text: rev.text,
-            score: "0",
             date: `${date.getFullYear()} - ${date.getMonth()}`,
             reviewer: "Bob",
             likes: 0
