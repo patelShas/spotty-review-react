@@ -33,8 +33,8 @@ const ReviewItem = (
                     </a>
                     <span className={"fw-bold"}> • {review.date}</span>
                 </div>
-                <div>
-                    <button type="button" className="btn btn-danger" onClick={() => {deleteReviewHandler(review._id)}}>Farm upstate</button>
+                <div className={"border-white"}>
+                    <button type="button" className="btn btn-danger rounded-pill" onClick={() => {deleteReviewHandler(review._id)}}>Delete Review</button>
                 </div>
             </div>
             <br/>
