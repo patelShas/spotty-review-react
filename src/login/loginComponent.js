@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from "react-redux";
-import {createUserThunk, logInUserThunk} from "../users/processing/user-thunks";
+import {logInUserThunk} from "../users/processing/user-thunks";
 import React from "react";
 import {logOut} from "../users/processing/users-reducer";
 
@@ -17,13 +17,18 @@ function LoginComponent() {
 
     const login = () => {
         dispatch(logInUserThunk(state))
+
+        document.getElementById("loginInfo").reset()
     }
     const logoutHandler = () => {
         dispatch(logOut())
+
     }
 
     const setUsername = (state, username) =>
         state.username = username
+
+
 
     const setPassword = (state, password) =>
         state.password = password
@@ -38,21 +43,19 @@ function LoginComponent() {
                 <span id={'failedMessage'} hidden={!failed}>Failed to log in</span>
                 <div>
                     <ul>
-                        <li>
+                        <form id={'loginInfo'}>
                             <input
-                                id={'registerUsername'}
+                                id={'logUsername'}
                                 onChange={(e) => setUsername(state, e.target.value)}
                                 className={'form-control'}
                                 placeholder="username"/>
-                        </li>
-                        <li>
                             <input
-                                id={'registerPassword'}
+                                id={'logPassword'}
                                 onChange={(e) => setPassword(state, e.target.value)}
                                 className={'form-control'}
                                 type="password"
                                 placeholder="password"/>
-                        </li>
+                        </form>
                     </ul>
                     <button
                         onClick={login}

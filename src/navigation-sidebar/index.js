@@ -40,7 +40,7 @@ const NavigationSidebar = () => {
                     ${active === 'more' ? 'active' : ''}`}
            href="/login">
             <i className="bi bi-box-arrow-in-right"></i>
-            <span className="d-none d-lg-inline"> Login</span>
+            <span className="d-none d-lg-inline"> {userType === "ANON" ? "Login" : "Logout"}</span>
         </a>
     </div>);
 };
