@@ -1,5 +1,5 @@
 import React from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {createUserThunk} from "../users/processing/user-thunks";
 
 function RegisterComponent() {
@@ -14,10 +14,12 @@ function RegisterComponent() {
 
     const dispatch = useDispatch()
 
+    const userDetails = useSelector(state => state.user)
+    const failed = userDetails.failed
+
     const register = (user) => {
         dispatch(createUserThunk(user))
     }
-       // registerUser(user)
 
     const setUsername = (state, username) =>
         state.username = username
@@ -38,6 +40,7 @@ function RegisterComponent() {
         <div>
             <h1>Register</h1>
             <span id={'noMatchMessage'} hidden={true}>The "password" and "verify password" fields do not match</span>
+            <span id={'failedMessage'} hidden={!failed}>Failed to register account</span>
             <div>
                 <ul>
                     <li>

@@ -1,4 +1,33 @@
+import {useDispatch, useSelector} from "react-redux";
+import {createUserThunk, logInUserThunk} from "../users/processing/user-thunks";
+import React from "react";
+import {logOut} from "../users/processing/users-reducer";
+
 function LoginComponent() {
+
+    const dispatch = useDispatch()
+
+    const userDetails = useSelector(state => state.user)
+    const failed = userDetails.failed
+
+    let state = {
+        username: '',
+        password: '',
+    }
+
+    const login = () => {
+        dispatch(logInUserThunk(state))
+    }
+    const logoutHandler = () => {
+        dispatch(logOut())
+    }
+
+    const setUsername = (state, username) =>
+        state.username = username
+
+    const setPassword = (state, password) =>
+        state.password = password
+
     return (
         <div>
             <h1>Login</h1>
@@ -6,9 +35,38 @@ function LoginComponent() {
                 <p>
                     Login content.
                 </p>
-                <p>
-                    Register content.
-                </p>
+                <span id={'failedMessage'} hidden={!failed}>Failed to log in</span>
+                <div>
+                    <ul>
+                        <li>
+                            <input
+                                id={'registerUsername'}
+                                onChange={(e) => setUsername(state, e.target.value)}
+                                className={'form-control'}
+                                placeholder="username"/>
+                        </li>
+                        <li>
+                            <input
+                                id={'registerPassword'}
+                                onChange={(e) => setPassword(state, e.target.value)}
+                                className={'form-control'}
+                                type="password"
+                                placeholder="password"/>
+                        </li>
+                    </ul>
+                    <button
+                        onClick={login}
+                        className={'btn btn-primary btn-block'}>
+                        Log in
+                    </button>
+                    <button
+                        onClick={logoutHandler}
+                        className={'btn btn-primary btn-block'}>
+                        Log out
+                    </button>
+                </div>
+
+
             </div>
             <div>
                 Exact requirements are:

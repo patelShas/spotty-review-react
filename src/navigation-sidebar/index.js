@@ -1,8 +1,13 @@
 import React from "react";
 import {useParams} from "react-router";
+import {useSelector} from "react-redux";
 
 const NavigationSidebar = () => {
     let {active} = useParams();
+
+    const details = useSelector(state => state.user)
+    const userType = details.user.type
+
     return (<div className="list-group">
         <a className={`list-group-item
                     ${!active || active === 'home' ? 'active' : ''}`}
@@ -22,12 +27,15 @@ const NavigationSidebar = () => {
             <i className="bi bi-person-circle"></i>
             <span className="d-none d-lg-inline"> Profile</span>
         </a>
-        <a className={`list-group-item
+        {
+            (userType === "ANON") && <a className={`list-group-item
                     ${active === 'more' ? 'active' : ''}`}
-           href="/register">
-            <i className="bi bi-person-fill-add"></i>
-            <span className="d-none d-lg-inline"> Register</span>
-        </a>
+                          href="/register">
+                <i className="bi bi-person-fill-add"></i>
+                <span className="d-none d-lg-inline"> Register</span>
+            </a>
+        }
+
         <a className={`list-group-item
                     ${active === 'more' ? 'active' : ''}`}
            href="/login">
