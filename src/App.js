@@ -8,12 +8,14 @@ import SearchComponent from "./search/searchComponent";
 import DetailsComponent from "./details/detailsComponent";
 import LoginComponent from "./login/loginComponent";
 import RegisterComponent from "./register/registerComponent";
+import NameBanner from "./users/banner";
 
 function App() {
     return (<div className="container">
         <BrowserRouter>
             <div className="row mt-2">
                 <div className="col-auto col-lg-2">
+                    <NameBanner/>
                     <Routes>
                         <Route path="/" element={<NavigationSidebar/>}/>
                         <Route path="/:active" element={<NavigationSidebar/>}/>

@@ -1,64 +1,41 @@
-import { createSlice } from "@reduxjs/toolkit";
-import {createUserThunk, deleteUserThunk, findUserThunk, updateUserThunk} from "./user-thunks";
+import {createSlice} from "@reduxjs/toolkit";
+import {createUserThunk} from "./user-thunks";
 
 const initialState = {
-    users: [],
-    loading: true
+    user: {
+        username: "anon",
+        password: "N/A",
+        bio: "",
+        following: [],
+        type: "ANON"
+    },
+    loading: false
 }
 
 
-const usersSlice = createSlice({
-                                     name: 'users',
-                                     initialState,
-                                     extraReducers: {
-                                         [findUserThunk.pending]:
-                                             (state) => {
-                                                 state.loading = true
-                                                 state.users = []
-                                             },
-                                         [findUserThunk.fulfilled]:
-                                             (state, { payload }) => {
-                                                 state.loading = false
-                                                 state.users = payload
-                                             },
-                                         [findUserThunk.rejected]:
-                                             (state) => {
-                                                 state.loading = false
-                                             },
-                                         [deleteUserThunk.fulfilled] :
-                                             (state, { payload }) => {
-                                                 state.loading = false
-                                                 state.users = state.users
-                                                     .filter(user => user._id !== payload)
-                                             },
-                                         [createUserThunk.fulfilled]:
-                                             (state, { payload }) => {
-                                                 state.loading = false
-                                                 state.users.push(payload)
-                                             },
-                                         [updateUserThunk.fulfilled]:
-                                             (state, { payload }) => {
-                                                 state.loading = false
-                                                 const userNdx = state.users
-                                                     .findIndex((user) => user._id === payload._id)
-                                                 state.users[userNdx] = {
-                                                     ...state.users[userNdx],
-                                                     ...payload
-                                                 }
-                                             }
+const userSlice = createSlice({
+    name: 'user',
+    initialState,
+    extraReducers: {
+        [createUserThunk.pending]:
+            (state) => {
+                state.loading = true
+            },
+        [createUserThunk.fulfilled]:
+            (state, {payload}) => {
+                state.loading = false
+                if (payload !== "") {
+                    state.user = payload
+                }
+            },
+        [createUserThunk.rejected]:
+            (state) => {
+                state.loading = false
+            },
 
 
-                                     },
-                                     reducers: {
-                                         addUser(state, action) {
-                                             state.push({
-                                                            _id: (new Date()).getTime(),
-                                                            ...action.payload,
-                                                        });
-                                         },
-                                     }
+    },
 
-                                 });
+});
 
-export const {addUser} = usersSlice.actions
-export default usersSlice.reducer;
+export default userSlice.reducer;

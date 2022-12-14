@@ -1,5 +1,4 @@
 import React from "react";
-import {registerUser} from "../users/processing/user-services";
 import {useDispatch} from "react-redux";
 import {createUserThunk} from "../users/processing/user-thunks";
 
@@ -10,12 +9,14 @@ function RegisterComponent() {
         username: '',
         password: '',
         bio: '',
+        type: 'USER'
     }
 
     const dispatch = useDispatch()
 
-    const register  = (user) =>
+    const register = (user) => {
         dispatch(createUserThunk(user))
+    }
        // registerUser(user)
 
     const setUsername = (state, username) =>
