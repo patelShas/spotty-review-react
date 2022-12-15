@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from "react-redux";
-import {logInUserThunk} from "../users/processing/user-thunks";
+import {logInUserThunk, logOutUserThunk} from "../users/processing/user-thunks";
 import React from "react";
 import {logOut} from "../users/processing/users-reducer";
 
@@ -17,17 +17,14 @@ function LoginComponent() {
 
     const login = () => {
         dispatch(logInUserThunk(state))
-
         document.getElementById("loginInfo").reset()
     }
     const logoutHandler = () => {
-        dispatch(logOut())
-
+        dispatch(logOutUserThunk())
     }
 
     const setUsername = (state, username) =>
         state.username = username
-
 
 
     const setPassword = (state, password) =>

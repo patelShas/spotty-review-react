@@ -1,9 +1,9 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {createUserThunk, logInUserThunk} from "./user-thunks";
+import {createUserThunk, getProfileThunk, logInUserThunk, logOutUserThunk} from "./user-thunks";
 
 const initialState = {
     user: {
-        username: "anon",
+        username: "Anon",
         password: "N/A",
         bio: "",
         following: [],
@@ -20,7 +20,7 @@ const userSlice = createSlice({
     reducers: {
       logOut(state, action) {
           state.user = {
-              username: "anon",
+              username: "Anon",
               password: "N/A",
               bio: "",
               following: [],
@@ -56,16 +56,26 @@ const userSlice = createSlice({
         [logInUserThunk.fulfilled]:
             (state, {payload}) => {
                 state.loading = false
-                if (payload !== "") {
-                    state.user = payload
-                } else {
-                    state.failed = true
-                }
+                state.failed = false
+                state.user = payload
             },
         [logInUserThunk.rejected]:
             (state) => {
                 state.loading = false
                 state.failed = true
+            },
+        [getProfileThunk.fulfilled]:
+            (state, {payload}) => {
+                console.log("profile:")
+                console.log(payload)
+                state.user = payload
+                state.failed = (state.user.username === "Anon")
+            },
+        [logOutUserThunk.fulfilled]:
+            (state, {payload}) => {
+                console.log("logout:")
+                console.log(payload)
+                state.user = payload
             },
 
 

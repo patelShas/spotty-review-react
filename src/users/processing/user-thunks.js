@@ -13,9 +13,20 @@ export const createUserThunk = createAsyncThunk(
 
 export const logInUserThunk = createAsyncThunk(
     'users/logInUser', async (credentials) => {
-        console.log(credentials)
         const newuser = await service.logInUser(credentials)
         return newuser
     }
 )
 
+export const logOutUserThunk = createAsyncThunk(
+    'users/logInUser', async (credentials) => {
+        const newuser = await service.logOutUser()
+        return newuser
+    }
+)
+
+export const getProfileThunk = createAsyncThunk(
+    'users/profile', async () => {
+        return await service.getProfile()
+    }
+)
