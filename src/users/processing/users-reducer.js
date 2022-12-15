@@ -1,5 +1,12 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {createUserThunk, getProfileThunk, logInUserThunk, logOutUserThunk, updateProfileThunk} from "./user-thunks";
+import {
+    createUserThunk,
+    getProfileThunk,
+    getUsersThunk,
+    logInUserThunk,
+    logOutUserThunk,
+    updateProfileThunk
+} from "./user-thunks";
 
 const initialState = {
     user: {
@@ -9,6 +16,7 @@ const initialState = {
         following: [],
         type: "ANON"
     },
+    users: [],
     loading: false,
     failed: false
 }
@@ -73,6 +81,14 @@ const userSlice = createSlice({
         [updateProfileThunk.fulfilled]:
             (state, {payload}) => {
                 state.user = payload
+            },
+        [getUsersThunk.fulfilled]:
+            (state, {payload}) => {
+                state.users = payload
+            },
+        [getUsersThunk.pending]:
+            (state) => {
+                state.users = []
             },
 
 

@@ -27,6 +27,13 @@ const ProfileContent = (
         }
         dispatch(updateProfileThunk(newUser))
     }
+    const unfollowHandler = () => {
+        let newUser = {
+            ...viewingUser,
+            following: viewingUser.following.filter(username => username !== subjectUser.username)
+        }
+        dispatch(updateProfileThunk(newUser))
+    }
     const submitBioHandler = () => {
         let newUser = {
             ...subjectUser,
@@ -36,20 +43,20 @@ const ProfileContent = (
     }
 
 
-
     return (
         <div>
             <h1>Profile</h1>
             <div>
                 <div className={"d-flex flex-row justify-content-between"}>
                     <h2>Here's {subjectUser.username}!</h2>
-                    {
-                        (subjectUser.username !== viewingUser.username &&
+                    {(subjectUser.username !== viewingUser.username &&
                             viewingUser.type !== "ANON" &&
                             !viewingUser.following.includes(subjectUser.username)) &&
-                        <button type="button" className="btn btn-primary" onClick={followHandler}>Follow</button>
-
-                    }
+                        <button type="button" className="btn btn-primary" onClick={followHandler}>Follow</button>}
+                    {(subjectUser.username !== viewingUser.username &&
+                            viewingUser.type !== "ANON" &&
+                            viewingUser.following.includes(subjectUser.username)) &&
+                        <button type="button" className="btn btn-danger" onClick={unfollowHandler}>Unfollow</button>}
                 </div>
 
                 <hr/>

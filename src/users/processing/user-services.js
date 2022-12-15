@@ -6,6 +6,10 @@ const api = axios.create({
     withCredentials: true
 });
 
+export const getUsers = async () => {
+    const response = await api.get(`http://localhost:4000/api/users`)
+    return response.data;
+}
 
 export const createUser = async (user) => {
     const response = await api.post(`${API}/register`, user)

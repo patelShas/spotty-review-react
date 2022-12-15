@@ -3,6 +3,13 @@ import {createAsyncThunk}
 import * as service
     from "./user-services"
 
+export const getUsersThunk = createAsyncThunk(
+    'users/createUser', async () => {
+        const users = await service.getUsers()
+        return users
+
+    }
+)
 
 export const createUserThunk = createAsyncThunk(
     'users/createUser', async (user) => {

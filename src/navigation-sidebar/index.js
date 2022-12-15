@@ -35,7 +35,14 @@ const NavigationSidebar = () => {
                 <span className="d-none d-lg-inline"> Register</span>
             </a>
         }
-
+        {
+            (userType !== "ANON") && <a className={`list-group-item
+                    ${active === 'more' ? 'active' : ''}`}
+                                        href="/connect">
+                <i className="bi bi-chat"></i>
+                <span className="d-none d-lg-inline"> Connect</span>
+            </a>
+        }
         <a className={`list-group-item
                     ${active === 'more' ? 'active' : ''}`}
            href="/login">

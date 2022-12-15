@@ -10,10 +10,9 @@ import LoginComponent from "./login/loginComponent";
 import RegisterComponent from "./register/registerComponent";
 import NameBanner from "./users/banner";
 import {useParams} from "react-router";
+import ConnectComponent from "./users/connectComponent";
 
 function App() {
-    const subject_name = useParams().subject
-    console.log(subject_name)
 
     return (<div className="container">
         <BrowserRouter>
@@ -44,6 +43,8 @@ function App() {
                                element={<LoginComponent/>}/>
                         <Route path={"/register"}
                                element={<RegisterComponent/>}/>
+                        <Route path={"/connect"}
+                               element={<ConnectComponent/>}/>
                     </Routes>
                 </div>
             </div>
