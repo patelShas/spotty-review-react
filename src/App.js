@@ -9,7 +9,6 @@ import DetailsComponent from "./details/detailsComponent";
 import LoginComponent from "./login/loginComponent";
 import RegisterComponent from "./register/registerComponent";
 import NameBanner from "./users/banner";
-import {useParams} from "react-router";
 import ConnectComponent from "./users/connectComponent";
 
 function App() {

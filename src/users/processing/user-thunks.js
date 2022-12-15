@@ -1,7 +1,5 @@
-import {createAsyncThunk}
-    from "@reduxjs/toolkit"
-import * as service
-    from "./user-services"
+import {createAsyncThunk} from "@reduxjs/toolkit"
+import * as service from "./user-services"
 
 export const getUsersThunk = createAsyncThunk(
     'users/createUser', async () => {

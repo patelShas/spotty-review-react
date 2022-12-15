@@ -2,7 +2,6 @@ import ReviewItem from "../reviews/reviewItem";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {findReviewsGenericThunk} from "../reviews/processing/review-thunks";
-import DetailsContent from "../details/detailsContent";
 
 function HomeComponent() {
     const {reviews} = useSelector(state => state.reviewData)
@@ -10,7 +9,7 @@ function HomeComponent() {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(findReviewsGenericThunk(``))
-    }, [])
+    }, [dispatch])
 
     return (<div>
         <h1 className={"display-1"}>The Spotify Music Reviewer</h1>

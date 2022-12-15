@@ -2,7 +2,6 @@ import {createAsyncThunk}
     from "@reduxjs/toolkit"
 import * as service
     from "./review-services"
-import {findReviewsGeneric} from "./review-services";
 
 export const findReviewsGenericThunk = createAsyncThunk(
     'reviews/findReviewsAlbum', async (query) =>
