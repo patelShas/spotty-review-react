@@ -39,8 +39,7 @@ const ReviewItem = (
                     </a>
                     <span className={"fw-bold"}> • {review.date} •</span>
                     <a href={`/details/${review.album_id}`}>
-                        <span className={""}> Album ID: </span>
-                        <span className={"fw-bold"}>{review.album_id}</span>
+                        <span className={"fw-bold"}> Jump to Album</span>
                     </a>
                 </div>
                 {(userDetails.type === "ADMIN" || userDetails.username === review.reviewer) &&

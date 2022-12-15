@@ -39,7 +39,7 @@ const ReviewWriter = (
             var newReview = {
                 album_id: album._id,
                 text: rev.text,
-                date: `${date.getMonth()}/${date.getDay()}/${date.getFullYear()}`,
+                date: `${date.getMonth()}.${date.getDay()}.${date.getFullYear()}`,
                 reviewer: details.user.username,
                 score: document.querySelector("#rating").value,
                 likes: 0

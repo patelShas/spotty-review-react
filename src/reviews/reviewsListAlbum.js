@@ -1,7 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
 import ReviewItem from "./reviewItem";
 import {useEffect} from "react";
-import {findReviewByAlbumThunk} from "./processing/review-thunks";
+import {findReviewByAlbumThunk, findReviewsGenericThunk} from "./processing/review-thunks";
 
 const ReviewsListAlbum = (
     {
@@ -13,7 +13,7 @@ const ReviewsListAlbum = (
     const {reviews, loading} = useSelector(state => state.reviewData)
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(findReviewByAlbumThunk(album._id))
+        dispatch(findReviewsGenericThunk(`album_id=${album._id}`))
     }, [album._id, dispatch])
     return (
         <>

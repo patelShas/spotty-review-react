@@ -1,9 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
 import {
     createReviewThunk,
     deleteReviewThunk,
-    findReviewByAlbumThunk,
-    findReviewByUserThunk,
+    findReviewsGenericThunk,
     updateReviewThunk
 } from "./review-thunks";
 
@@ -17,47 +16,33 @@ const reviewsSlice = createSlice({
     name: 'reviews',
     initialState,
     extraReducers: {
-        [findReviewByAlbumThunk.pending]:
+        [findReviewsGenericThunk.pending]:
             (state) => {
                 state.loading = true
                 state.reviews = []
             },
-        [findReviewByAlbumThunk.fulfilled]:
-            (state, { payload }) => {
+        [findReviewsGenericThunk.fulfilled]:
+            (state, {payload}) => {
                 state.loading = false
                 state.reviews = payload
             },
-        [findReviewByAlbumThunk.rejected]:
+        [findReviewsGenericThunk.rejected]:
             (state) => {
                 state.loading = false
             },
-        [findReviewByUserThunk.pending]:
-            (state) => {
-                state.loading = true
-                state.reviews = []
-            },
-        [findReviewByUserThunk.fulfilled]:
-            (state, { payload }) => {
-                state.loading = false
-                state.reviews = payload
-            },
-        [findReviewByUserThunk.rejected]:
-            (state) => {
-                state.loading = false
-            },
-        [deleteReviewThunk.fulfilled] :
-            (state, { payload }) => {
+        [deleteReviewThunk.fulfilled]:
+            (state, {payload}) => {
                 state.loading = false
                 state.reviews = state.reviews
                     .filter(rev => rev._id !== payload)
             },
         [createReviewThunk.fulfilled]:
-            (state, { payload }) => {
+            (state, {payload}) => {
                 state.loading = false
                 state.reviews.push(payload)
             },
         [updateReviewThunk.fulfilled]:
-            (state, { payload }) => {
+            (state, {payload}) => {
                 state.loading = false
                 const reviewNdx = state.reviews
                     .findIndex((rev) => rev._id === payload._id)

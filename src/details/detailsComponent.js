@@ -5,6 +5,7 @@ import ReviewsListAlbum from "../reviews/reviewsListAlbum";
 import ReviewWriter from "../reviews/reviewWriter";
 import {useEffect} from "react";
 import {findDetailsThunk} from "./processing/detail-thunks";
+import DetailsContent from "./detailsContent";
 
 
 function DetailsComponent() {
@@ -12,36 +13,7 @@ function DetailsComponent() {
     const parts = pathname.split("/")
     const album_id = parts[parts.length - 1]
 
-    const details = useSelector(state => state.details)
-    const fullfilled = details.fulfilled
-    const chosenAlbum = details.details
-
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(findDetailsThunk(album_id))
-    }, [album_id, dispatch])
-
-    return (
-        <div>
-            {fullfilled === 1 ? (
-                    <div className={"list-group"}>
-                        <DetailItem album={chosenAlbum}/>
-                        <ReviewWriter album={chosenAlbum}/>
-                        <ReviewsListAlbum album={chosenAlbum}/>
-                    </div>
-                ) : (
-                fullfilled === -1 ? (
-                    <div className={"p-3 bg-danger"}>
-                        <h2 className={"text-white"}>{"Sorry, but no matching album was found"}</h2>
-                    </div>
-                ) : (
-                    <div className={"p-3 bg-secondary"}>
-                        <h2 className={"text-white"}>{"loading..."}</h2>
-                    </div>
-                )
-            )}
-        </div>
-    )
+    return <DetailsContent album_id={album_id}/>
 }
 
 export default DetailsComponent;
