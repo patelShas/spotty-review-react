@@ -1,22 +1,53 @@
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect, useState} from "react";
+import {getProfileThunk, updateProfileThunk} from "../users/processing/user-thunks";
+import ReviewsListUser from "../reviews/reviewsListUser";
 
 function ProfileComponent() {
-    return(
+    const user = useSelector(state => state.user.user)
+
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(getProfileThunk())
+    }, [])
+    const submitBioHandler = () => {
+        let newUser = {
+            ...user,
+            bio: document.querySelector("#newBioText").value
+        }
+        dispatch(updateProfileThunk(newUser))
+    }
+
+
+    return (
         <div>
             <h1>Profile</h1>
             <div>
-                <p>
-                    Some public details
-                </p>
+                <h2>Welcome back, {user.username}!</h2>
+                <hr/>
+                <p>{user.bio}</p>
+                {user.username !== "Anon" && (
+                    <div className={"list-group-item d-flex flex-row justify-content-between"}>
+                        <input className="form-control" id={"newBioText"}/>
+                        <button type="button" className="btn btn-primary" onClick={submitBioHandler}>Submit new bio</button>
+                    </div>
+                )}
+
             </div>
             <div>
-                <p>
-                    Some private details visible only if the viewer is logged in as this user
-                </p>
+                <hr/>
+                <div className={"list-group"}>
+                    You are currently following:
+                    {user.following.map(influencer => (
+                        <div className={"list-group-item"}>
+                            {influencer}
+                        </div>
+                    ))}
+                </div>
             </div>
             <div>
-                <p>
-                    We would have a list of posts, each linking to a dedicated details page.
-                </p>
+                <hr/>
+                <ReviewsListUser username={user.username}/>
             </div>
             <div>
                 Exact requirements are:

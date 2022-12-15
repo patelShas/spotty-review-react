@@ -1,7 +1,7 @@
 import {useLocation} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
 import DetailItem from "./detailItem.js";
-import ReviewsList from "../reviews/reviewsList";
+import ReviewsListAlbum from "../reviews/reviewsListAlbum";
 import ReviewWriter from "../reviews/reviewWriter";
 import {useEffect} from "react";
 import {findDetailsThunk} from "./processing/detail-thunks";
@@ -27,7 +27,7 @@ function DetailsComponent() {
                     <div className={"list-group"}>
                         <DetailItem album={chosenAlbum}/>
                         <ReviewWriter album={chosenAlbum}/>
-                        <ReviewsList album={chosenAlbum}/>
+                        <ReviewsListAlbum album={chosenAlbum}/>
                     </div>
                 ) : (
                 fullfilled === -1 ? (

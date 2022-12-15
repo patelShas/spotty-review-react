@@ -3,9 +3,14 @@ import {createAsyncThunk}
 import * as service
     from "./review-services"
 
-export const findReviewThunk = createAsyncThunk(
-    'reviews/findReviews', async (album_id) =>
-        await service.findReviews(album_id)
+export const findReviewByAlbumThunk = createAsyncThunk(
+    'reviews/findReviewsAlbum', async (album_id) =>
+        await service.findReviewsByAlbum(album_id)
+)
+
+export const findReviewByUserThunk = createAsyncThunk(
+    'reviews/findReviewsUser', async (user_name) =>
+        await service.findReviewsByUser(user_name)
 )
 
 export const deleteReviewThunk = createAsyncThunk(

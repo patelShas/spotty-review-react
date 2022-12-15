@@ -1,9 +1,9 @@
 import {useDispatch, useSelector} from "react-redux";
 import ReviewItem from "./reviewItem";
 import {useEffect} from "react";
-import {findReviewThunk} from "./processing/review-thunks";
+import {findReviewByAlbumThunk} from "./processing/review-thunks";
 
-const ReviewsList = (
+const ReviewsListAlbum = (
     {
         album = {
             "_id": "123"
@@ -13,7 +13,7 @@ const ReviewsList = (
     const {reviews, loading} = useSelector(state => state.reviewData)
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(findReviewThunk(album._id))
+        dispatch(findReviewByAlbumThunk(album._id))
     }, [album._id, dispatch])
     return (
         <>
@@ -31,4 +31,4 @@ const ReviewsList = (
         </>
     )
 }
-export default ReviewsList;
+export default ReviewsListAlbum;

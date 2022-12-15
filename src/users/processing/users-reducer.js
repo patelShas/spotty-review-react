@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {createUserThunk, getProfileThunk, logInUserThunk, logOutUserThunk} from "./user-thunks";
+import {createUserThunk, getProfileThunk, logInUserThunk, logOutUserThunk, updateProfileThunk} from "./user-thunks";
 
 const initialState = {
     user: {
@@ -37,11 +37,8 @@ const userSlice = createSlice({
         [createUserThunk.fulfilled]:
             (state, {payload}) => {
                 state.loading = false
-                if (payload !== "") {
-                    state.user = payload
-                } else {
-                    state.failed = true
-                }
+                state.user = payload
+                state.failed = (state.user.username === "Anon")
             },
         [createUserThunk.rejected]:
             (state) => {
@@ -73,8 +70,10 @@ const userSlice = createSlice({
             },
         [logOutUserThunk.fulfilled]:
             (state, {payload}) => {
-                console.log("logout:")
-                console.log(payload)
+                state.user = payload
+            },
+        [updateProfileThunk.fulfilled]:
+            (state, {payload}) => {
                 state.user = payload
             },
 
