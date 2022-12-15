@@ -63,8 +63,6 @@ const userSlice = createSlice({
             },
         [getProfileThunk.fulfilled]:
             (state, {payload}) => {
-                console.log("profile:")
-                console.log(payload)
                 state.user = payload
                 state.failed = (state.user.username === "Anon")
             },

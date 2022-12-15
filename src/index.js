@@ -9,8 +9,9 @@ import { configureStore } from '@reduxjs/toolkit';
 import detailReducer from "./details/processing/detail-reducer";
 import albumSearchReducer from "./search/processing/search-reducer"
 import usersReducer from "./users/processing/users-reducer";
+import subjectReducer from "./profile/subject-user/subject-reducer";
 const store = configureStore({
-    reducer: {reviewData: reviewsReducer, details: detailReducer, searchResults: albumSearchReducer, user: usersReducer}
+    reducer: {reviewData: reviewsReducer, details: detailReducer, searchResults: albumSearchReducer, user: usersReducer, subject: subjectReducer}
 });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

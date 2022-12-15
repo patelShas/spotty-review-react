@@ -28,11 +28,11 @@ function App() {
                                element={<HomeComponent/>}/>
                         <Route path="/home"
                                element={<HomeComponent/>}/>
-                        <Route path="/search/*"
+                        <Route path="/search/"
                                element={<SearchComponent/>}/>
                         <Route path="/details/*"
                                element={<DetailsComponent/>}/>
-                        <Route path={"/profile"}
+                        <Route path={"/profile/:subject"}
                                element={<ProfileComponent/>}/>
                         <Route path={"/login"}
                                element={<LoginComponent/>}/>
