@@ -9,8 +9,12 @@ import DetailsComponent from "./details/detailsComponent";
 import LoginComponent from "./login/loginComponent";
 import RegisterComponent from "./register/registerComponent";
 import NameBanner from "./users/banner";
+import {useParams} from "react-router";
 
 function App() {
+    const subject_name = useParams().subject
+    console.log(subject_name)
+
     return (<div className="container">
         <BrowserRouter>
             <div className="row mt-2">
@@ -32,6 +36,8 @@ function App() {
                                element={<SearchComponent/>}/>
                         <Route path="/details/*"
                                element={<DetailsComponent/>}/>
+                        <Route path={"/profile/"}
+                               element={<ProfileComponent/>}/>
                         <Route path={"/profile/:subject"}
                                element={<ProfileComponent/>}/>
                         <Route path={"/login"}
