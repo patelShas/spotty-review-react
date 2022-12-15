@@ -18,7 +18,7 @@ function App() {
     return (<div className="container">
         <BrowserRouter>
             <div className="row mt-2">
-                <div className="col-auto col-lg-2">
+                <div className="col-2">
                     <NameBanner/>
                     <Routes>
                         <Route path="/" element={<NavigationSidebar/>}/>
@@ -32,7 +32,7 @@ function App() {
                                element={<HomeComponent/>}/>
                         <Route path="/home"
                                element={<HomeComponent/>}/>
-                        <Route path="/search/"
+                        <Route path="/search/*"
                                element={<SearchComponent/>}/>
                         <Route path="/details/*"
                                element={<DetailsComponent/>}/>

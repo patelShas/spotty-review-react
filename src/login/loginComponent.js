@@ -1,7 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import {logInUserThunk, logOutUserThunk} from "../users/processing/user-thunks";
 import React from "react";
-import {logOut} from "../users/processing/users-reducer";
 
 function LoginComponent() {
 

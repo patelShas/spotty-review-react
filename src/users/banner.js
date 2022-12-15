@@ -10,11 +10,11 @@ const NameBanner = () => {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getProfileThunk())
-    }, [])
+    }, [dispatch])
 
 
     return (
-        <div>
+        <div className={"d-none d-md-block"}>
             <h1>Hello, {username}!</h1>
         </div>
     )

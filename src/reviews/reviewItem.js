@@ -1,5 +1,6 @@
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {deleteReviewThunk, updateReviewThunk} from "./processing/review-thunks";
+import {useState} from "react";
 
 const ReviewItem = (
     {
@@ -13,15 +14,21 @@ const ReviewItem = (
 
     },) => {
     const dispatch = useDispatch()
+    const userDetails = useSelector(state => state.user.user)
+    const [showAlert, setShowAlert] = useState(false);
     const deleteReviewHandler = (id) => {
         dispatch(deleteReviewThunk(id));
     }
     const likeReviewHandler = (rev) => {
-        const newRev = {
-            ...rev,
-            "likes": rev.likes + 1
+        if (userDetails.type === "ANON") {
+            setShowAlert(true);
+        } else {
+            const newRev = {
+                ...rev,
+                "likes": rev.likes + 1
+            }
+            dispatch(updateReviewThunk(newRev))
         }
-        dispatch(updateReviewThunk(newRev))
     }
     return (
         <div>
@@ -36,11 +43,20 @@ const ReviewItem = (
                         <span className={"fw-bold"}>{review.album_id}</span>
                     </a>
                 </div>
-                <div className={"border-white"}>
-                    <button type="button" className="btn btn-danger rounded-pill" onClick={() => {deleteReviewHandler(review._id)}}>Delete Review</button>
-                </div>
+                {(userDetails.type === "ADMIN" || userDetails.username === review.reviewer) &&
+                    <div className={"border-white"}>
+                        <button type="button" className="btn btn-danger rounded-pill" onClick={() => {
+                            deleteReviewHandler(review._id)
+                        }}>Delete Review
+                        </button>
+                    </div>
+                }
+
             </div>
             <br/>
+            <div className="alert alert-info" role="alert" hidden={!showAlert}>
+                Sorry, this action requires login
+            </div>
             <div className={"d-flex flex-row justify-content-between"}>
                 <div>
                     {review.text}

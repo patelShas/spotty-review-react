@@ -2,7 +2,6 @@ import {createAsyncThunk}
     from "@reduxjs/toolkit"
 import * as service
     from "./user-services"
-import {updateProfile} from "./user-services";
 
 
 export const createUserThunk = createAsyncThunk(

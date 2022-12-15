@@ -19,21 +19,39 @@ const ProfileContent = (
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getProfileThunk())
-    }, [])
-    const submitBioHandler = () => {
+    }, [dispatch])
+    const followHandler = () => {
         let newUser = {
             ...viewingUser,
+            following: [subjectUser.username, ...viewingUser.following]
+        }
+        dispatch(updateProfileThunk(newUser))
+    }
+    const submitBioHandler = () => {
+        let newUser = {
+            ...subjectUser,
             bio: document.querySelector("#newBioText").value
         }
         dispatch(updateProfileThunk(newUser))
     }
 
 
+
     return (
         <div>
             <h1>Profile</h1>
             <div>
-                <h2>Welcome back, {subjectUser.username}!</h2>
+                <div className={"list-group-item d-flex flex-row justify-content-between"}>
+                    <h2>Here's {subjectUser.username}!</h2>
+                    {
+                        (subjectUser.username !== viewingUser.username &&
+                            viewingUser.type !== "ANON" &&
+                            !viewingUser.following.includes(subjectUser.username)) &&
+                        <button type="button" className="btn btn-primary" onClick={followHandler}>Follow</button>
+
+                    }
+                </div>
+
                 <hr/>
                 <p>{subjectUser.bio}</p>
                 {subjectUser.username === viewingUser.username && viewingUser.type !== "ANON" && (
@@ -43,19 +61,23 @@ const ProfileContent = (
                         </button>
                     </div>
                 )}
-
             </div>
             <div>
                 <hr/>
-                Followers:
-                {subjectUser.username === viewingUser.username && (
+                {subjectUser.username === viewingUser.username ? (
                     <div className={"list-group"}>
                         You are currently following:
                         {viewingUser.following.map(influencer => (
                             <div className={"list-group-item"}>
-                                {influencer}
+                                <a href={`/profile/${influencer}`}>
+                                    <span className={"fw-bold"}>{influencer}</span>
+                                </a>
                             </div>
                         ))}
+                    </div>
+                ) : (
+                    <div className={"list-group-item"}>
+                        Followings are kept private.
                     </div>
                 )}
 

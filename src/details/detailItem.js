@@ -29,7 +29,7 @@ const DetailItem = (
                 <li>By {album.artist}</li>
                 <li>Released on {album.release_date}</li>
                 <li>{album.total_tracks} tracks</li>
-                <a href={album.link} target="_blank">To Spotify</a>
+                <a href={album.link} target="_blank" rel="noreferrer">To Spotify</a>
             </ul>
         </div>
     );

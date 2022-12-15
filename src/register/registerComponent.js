@@ -15,7 +15,6 @@ function RegisterComponent() {
     const dispatch = useDispatch()
 
     const userDetails = useSelector(state => state.user)
-    const failed = userDetails.failed
 
     const register = (user) => {
         user.type = document.querySelector("#userType").value
@@ -41,7 +40,6 @@ function RegisterComponent() {
         <div>
             <h1>Register</h1>
             <span id={'noMatchMessage'} hidden={true}>The "password" and "verify password" fields do not match</span>
-            <span id={'failedMessage'} hidden={failed}>Failed to register account</span>
             <div className={"list-group"}>
                 <div className={"list-group-item"}>
                     <input
