@@ -4,12 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {Provider} from "react-redux";
-import albumReducer from "./reducers/album-reducer";
-import reviewsReducer from "./reducers/reviews-reducer";
+import reviewsReducer from "./reviews/processing/reviews-reducer";
 import { configureStore } from '@reduxjs/toolkit';
-import whoReducer from "./reducers/who-reducer";
+import detailReducer from "./details/processing/detail-reducer";
+import albumSearchReducer from "./search/processing/search-reducer"
+import usersReducer from "./users/processing/users-reducer";
+import subjectReducer from "./profile/subject-user/subject-reducer";
 const store = configureStore({
-    reducer: {who : whoReducer, albums : albumReducer, reviews: reviewsReducer}
+    reducer: {reviewData: reviewsReducer, details: detailReducer, searchResults: albumSearchReducer, user: usersReducer, subject: subjectReducer}
 });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

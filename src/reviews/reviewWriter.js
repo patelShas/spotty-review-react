@@ -1,6 +1,7 @@
-import {useState} from "react";
-import {addReview} from "../reducers/reviews-reducer";
-import {useDispatch} from "react-redux";
+import {useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {createReviewThunk} from "./processing/review-thunks";
+import {getProfileThunk} from "../users/processing/user-thunks";
 
 const ReviewWriter = (
     {
@@ -9,11 +10,21 @@ const ReviewWriter = (
         }
     }
 ) => {
+
+    const details = useSelector(state => state.user)
+    const userType = details.user.type
+
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(getProfileThunk())
+    }, [dispatch])
+
+    const [showAlert, setShowAlert] = useState(false);
+
     const date = new Date()
     const [rev, setRev] = useState({
         text: '',
     });
-    const dispatch = useDispatch()
     const newRevHandler = (event) => {
         const revValue = event.target.value;
         const newRev = {
@@ -22,21 +33,39 @@ const ReviewWriter = (
         setRev(newRev)
     }
     const submitHandler = () => {
-        const newReview = {
-            album_id: album._id,
-            text: rev.text,
-            score: "0",
-            date: `${date.getFullYear()} - ${date.getMonth()}`,
-            reviewer: "Bob",
-            likes: 0
-        };
-        dispatch(addReview(newReview))
+        if (userType === "ANON") {
+            setShowAlert(true);
+        } else {
+            var newReview = {
+                album_id: album._id,
+                text: rev.text,
+                date: `${date.getMonth()}.${date.getDay()}.${date.getFullYear()}`,
+                reviewer: details.user.username,
+                score: document.querySelector("#rating").value,
+                likes: 0
+            };
+            dispatch(createReviewThunk(newReview))
+        }
+
     }
     return (
-        <div className={"list-group-item d-flex flex-row justify-content-between"}>
-            <input className="form-control" value={rev.text} onChange={newRevHandler}/>
-            <button type="button" className="btn btn-primary" onClick={submitHandler}>Submit</button>
-        </div>
+        <>
+            <div className="alert alert-info" role="alert" hidden={!showAlert}>
+                Sorry, Submitting a review requires login
+            </div>
+            <div className={"list-group-item d-flex flex-row justify-content-between"}>
+                <input className="form-control" value={rev.text} onChange={newRevHandler}/>
+                <select id="rating" name="stars">
+                    <option value={1}>1 ⭐</option>
+                    <option value={2}>2 ⭐</option>
+                    <option value={3}>3 ⭐</option>
+                    <option value={4}>4 ⭐</option>
+                    <option value={5}>5 ⭐</option>
+                </select>
+                <button type="button" className="btn btn-primary" onClick={submitHandler}>Submit</button>
+            </div>
+        </>
+
     )
 }
 export default ReviewWriter;
