@@ -1,13 +1,14 @@
 import axios from 'axios';
+import DatabaseUrl from "../../database-url";
 
-const API = 'http://localhost:4000/api/auth';
+const API = DatabaseUrl + '/api/auth';
 
 const api = axios.create({
     withCredentials: true
 });
 
 export const getUsers = async () => {
-    const response = await api.get(`http://localhost:4000/api/users`)
+    const response = await api.get(DatabaseUrl + `/api/users`)
     return response.data;
 }
 
