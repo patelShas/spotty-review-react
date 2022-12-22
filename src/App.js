@@ -1,15 +1,15 @@
 import 'bootswatch/dist/darkly/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import ProfileComponent from "./profile/profileComponent";
+import ProfileComponent from "./profile";
 import NavigationSidebar from "./navigation-sidebar";
-import HomeComponent from "./home/homeComponent";
-import SearchComponent from "./search/searchComponent";
-import DetailsComponent from "./details/detailsComponent";
-import LoginComponent from "./login/loginComponent";
-import RegisterComponent from "./register/registerComponent";
+import HomeComponent from "./home";
+import SearchComponent from "./search";
+import DetailsComponent from "./details";
+import LoginComponent from "./login";
+import RegisterComponent from "./register";
 import NameBanner from "./users/banner";
-import ConnectComponent from "./users/connectComponent";
+import ConnectComponent from "./users";
 
 function App() {
 
