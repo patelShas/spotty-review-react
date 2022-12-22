@@ -30,7 +30,7 @@ const SearchResults = (
                          height={"50"}></img>
                 </a>
             ))}
-            {((status === -1) || (status === 1 && albums.length === 0) )&& <div className={"list-group-item"}>
+            {((status === -1) || (status === 1 && albums.length === 0)) && <div className={"list-group-item"}>
                 Sorry, No results found.
             </div>}
         </div>

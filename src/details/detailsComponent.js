@@ -45,5 +45,4 @@ function DetailsComponent() {
 }
 
 
-
 export default DetailsComponent;

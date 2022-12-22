@@ -5,7 +5,7 @@ import SearchResults from "./searchResults";
 function SearchComponent() {
     const {pathname} = useLocation()
     const parts = pathname.split("/")
-    return(
+    return (
         <div>
             <h1>Search something</h1>
             <div>
@@ -19,4 +19,5 @@ function SearchComponent() {
 
     );
 }
+
 export default SearchComponent;

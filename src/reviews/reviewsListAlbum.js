@@ -1,7 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
 import ReviewItem from "./reviewItem";
 import {useEffect} from "react";
-import {findReviewByAlbumThunk, findReviewsGenericThunk} from "./processing/review-thunks";
+import {findReviewsGenericThunk} from "./processing/review-thunks";
 
 const ReviewsListAlbum = (
     {

@@ -2,7 +2,7 @@ import React from "react";
 import DetailsComponent from "./detailsComponent";
 
 function DetailsPage() {
-    return(
+    return (
         <div className="row mt-2">
             <div className="col-2 bg-success text-white">
                 Wigma

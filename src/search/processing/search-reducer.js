@@ -12,11 +12,13 @@ const albumSearchSlice = createSlice({
     extraReducers: {
         [searchThunk.pending]: (state) => {
             state.searchStatus = 0
-            state.results = []}
+            state.results = []
+        }
         ,
         [searchThunk.rejected]: (state) => {
             state.searchStatus = -1
-            state.results = []}
+            state.results = []
+        }
         ,
         [searchThunk.fulfilled]: (state, {payload}) => {
             state.searchStatus = 1

@@ -26,15 +26,15 @@ const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-      logOut(state, action) {
-          state.user = {
-              username: "Anon",
-              password: "N/A",
-              bio: "",
-              following: [],
-              type: "ANON"
-          }
-      }
+        logOut(state, action) {
+            state.user = {
+                username: "Anon",
+                password: "N/A",
+                bio: "",
+                following: [],
+                type: "ANON"
+            }
+        }
     },
     extraReducers: {
         [createUserThunk.pending]:

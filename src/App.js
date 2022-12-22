@@ -1,6 +1,6 @@
 import 'bootswatch/dist/darkly/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import {BrowserRouter, Routes, Route} from "react-router-dom";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import ProfileComponent from "./profile/profileComponent";
 import NavigationSidebar from "./navigation-sidebar";
 import HomeComponent from "./home/homeComponent";

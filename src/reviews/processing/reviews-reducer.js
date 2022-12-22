@@ -1,10 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {
-    createReviewThunk,
-    deleteReviewThunk,
-    findReviewsGenericThunk,
-    updateReviewThunk
-} from "./review-thunks";
+import {createReviewThunk, deleteReviewThunk, findReviewsGenericThunk, updateReviewThunk} from "./review-thunks";
 
 const initialState = {
     reviews: [],

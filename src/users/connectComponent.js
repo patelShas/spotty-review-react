@@ -12,7 +12,7 @@ function ConnectComponent() {
     const userDetails = useSelector(state => state.user)
     const users = userDetails.users
 
-    return(
+    return (
         <div>
             <h1>Connect!</h1>
             Explore other users, and see who you'd like to follow
@@ -27,11 +27,11 @@ function ConnectComponent() {
                         </div>
                         <div>{user.bio}</div>
                     </div>
-
                 )}
             </div>
         </div>
 
     );
 }
+
 export default ConnectComponent;

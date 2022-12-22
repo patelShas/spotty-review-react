@@ -1,5 +1,4 @@
-import {createAsyncThunk}
-    from "@reduxjs/toolkit"
+import {createAsyncThunk} from "@reduxjs/toolkit"
 import * as service from "./search-services"
 
 export const searchThunk = createAsyncThunk(

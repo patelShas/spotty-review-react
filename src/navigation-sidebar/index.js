@@ -30,7 +30,7 @@ const NavigationSidebar = () => {
         {
             (userType === "ANON") && <a className={`list-group-item
                     ${active === 'more' ? 'active' : ''}`}
-                          href="/register">
+                                        href="/register">
                 <i className="bi bi-person-fill-add"></i>
                 <span className="d-none d-lg-inline"> Register</span>
             </a>

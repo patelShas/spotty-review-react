@@ -5,7 +5,7 @@ import {findReviewsGenericThunk} from "./processing/review-thunks";
 
 const ReviewsListUser = (
     {
-        username= "Bob"
+        username = "Bob"
     }
 ) => {
 

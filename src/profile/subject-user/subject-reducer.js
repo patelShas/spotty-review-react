@@ -2,8 +2,7 @@ import {createSlice} from "@reduxjs/toolkit";
 import {findSubjectUserThunk} from "./subject-thunk";
 
 const initialState = {
-    user: {
-    },
+    user: {},
     failed: false
 }
 
