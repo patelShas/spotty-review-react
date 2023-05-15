@@ -4,6 +4,7 @@ import DatabaseUrl from "../../database-url";
 const REVIEWS_API = DatabaseUrl + '/api/reviews';
 
 export const findReviewsGeneric = async (query_string) => {
+    console.log(REVIEWS_API)
     const response = await axios.get(`${REVIEWS_API}?${query_string}`);
     const reviews = response.data;
     return reviews;
