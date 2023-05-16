@@ -3,8 +3,8 @@ import qs from 'qs';
 
 const DETAILS_API = 'https://api.spotify.com/v1/albums';
 
-const clientId = "9656c9afef2849d88c59827fe08da3bd"; // Your client id
-const clientSecret = "9ce25593c5d64093b9d287f928642d47"; // Your secret
+const clientId = process.env.REACT_APP_CLIENT_ID;// Your client id
+const clientSecret = process.env.REACT_APP_CLIENT_SECRET; // Your secret
 
 // This code, used to get an authorization token from spotify, is based on the code available here:
 //  https://gist.github.com/donstefani/70ef1069d4eab7f2339359526563aab2
@@ -20,6 +20,7 @@ export const getAuth = async () => {
             password: clientSecret,
         },
     };
+    //console.log(headers);
     const data = {
         grant_type: 'client_credentials',
     };
@@ -32,7 +33,7 @@ export const getAuth = async () => {
         );
         return response.data.access_token;
     } catch (error) {
-        console.log(error);
+        // console.log(error);
     }
 };
 
